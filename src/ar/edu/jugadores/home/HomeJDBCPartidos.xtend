@@ -58,44 +58,44 @@ class HomeJDBCPartidos implements HomePartidos { // JDBC driver name and databas
 		rs.close()
 	}
 
-	override getResultado(Equipo equipo1, Equipo equipo2) {
-		val sql = "
-			select eq_loc.equipo_id as idEquipoLocal,
-			       eq_loc.nombre as nombreEquipoLocal,
-			       for_loc.goles as golesLocal,
-			       eq_vis.equipo_id as idEquipoVisitante,
-			       eq_vis.nombre as nombreEquipoVisitante,
-			       for_vis.goles as golesVisitante
-			  from partidos p,
-			       formacion for_loc,
-			       formacion for_vis,
-			       equipos eq_loc,
-			       equipos eq_vis
-			 where p.formacion_local_id = for_loc.formacion_id
-			   and for_loc.equipo_id = eq_loc.equipo_id
-			   and p.formacion_visitante_id = for_vis.formacion_id
-			   and for_vis.equipo_id = eq_vis.equipo_id;
-			"
-		val ResultSet rs = this.ejecutarQuery(sql)
-		var partidoResult = new Partido
+override getResultado(Equipo equipo1, Equipo equipo2) {
+	val sql = "
+		select eq_loc.equipo_id as idEquipoLocal,
+		       eq_loc.nombre as nombreEquipoLocal,
+		       for_loc.goles as golesLocal,
+		       eq_vis.equipo_id as idEquipoVisitante,
+		       eq_vis.nombre as nombreEquipoVisitante,
+		       for_vis.goles as golesVisitante
+		  from partidos p,
+		       formacion for_loc,
+		       formacion for_vis,
+		       equipos eq_loc,
+		       equipos eq_vis
+		 where p.formacion_local_id = for_loc.formacion_id
+		   and for_loc.equipo_id = eq_loc.equipo_id
+		   and p.formacion_visitante_id = for_vis.formacion_id
+		   and for_vis.equipo_id = eq_vis.equipo_id;
+		"
+	val ResultSet rs = this.ejecutarQuery(sql)
+	var partidoResult = new Partido
 
-		while (rs.next()) {
-			var id = rs.getInt("idEquipoLocal")
-			var nombre = rs.getString("nombreEquipoLocal")
-			var goles = rs.getInt("golesLocal")
-			partidoResult.formacionLocal = new Formacion(new Equipo(id, nombre), goles)
+	while (rs.next()) {
+		var id = rs.getInt("idEquipoLocal")
+		var nombre = rs.getString("nombreEquipoLocal")
+		var goles = rs.getInt("golesLocal")
+		partidoResult.formacionLocal = new Formacion(new Equipo(id, nombre), goles)
 
-			id = rs.getInt("idEquipoVisitante")
-			nombre = rs.getString("nombreEquipoVisitante")
-			goles = rs.getInt("golesVisitante")
-			partidoResult.formacionVisitante = new Formacion(new Equipo(id, nombre), goles)
-		}
-
-		rs.close()
-		this.cerrarQuery()
-		
-		partidoResult
+		id = rs.getInt("idEquipoVisitante")
+		nombre = rs.getString("nombreEquipoVisitante")
+		goles = rs.getInt("golesVisitante")
+		partidoResult.formacionVisitante = new Formacion(new Equipo(id, nombre), goles)
 	}
+
+	rs.close()
+	this.cerrarQuery()
+	
+	partidoResult
+}
 
 	def cerrarQuery() {
 		stmt.close()
@@ -107,4 +107,5 @@ class HomeJDBCPartidos implements HomePartidos { // JDBC driver name and databas
 		stmt = conn.createStatement()
 		rs = stmt.executeQuery(sql)
 	}
+
 }
