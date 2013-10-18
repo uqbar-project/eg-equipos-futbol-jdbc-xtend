@@ -5,11 +5,13 @@ import java.util.List
 
 class Formacion {
 	
+	@Property int id
 	@Property Equipo equipo
 	@Property List<Jugador> jugadores
 	@Property int goles
 	
-	new(Equipo equipo, int goles) {
+	new(int id, Equipo equipo, int goles) {
+		this.id = id
 		this.equipo = equipo
 		this.goles = goles
 		this.jugadores = new ArrayList<Jugador>
