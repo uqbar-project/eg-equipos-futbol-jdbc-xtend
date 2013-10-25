@@ -5,7 +5,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
-	<artifactId>jugadores-datos-jdbc-xtend</artifactId>
+	<artifactId>jugadores-jdbc-xtend</artifactId>
 	<groupId>org.uqbar-project</groupId>
 	<version>0.0.1-SNAPSHOT</version>
 
