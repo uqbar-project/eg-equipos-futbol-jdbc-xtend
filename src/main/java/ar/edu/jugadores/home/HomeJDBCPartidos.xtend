@@ -26,16 +26,16 @@ class HomeJDBCPartidos implements HomePartidos { // JDBC driver name and databas
 
 	override getPartido(Equipo equipo1, Equipo equipo2) {
 		val partido = getResultado(equipo1, equipo2)
-		
+
 		// Ahora vamos en profundidad
 		val formacionLocal = partido.formacionLocal
 		this.traerJugadores(formacionLocal)
-		
+
 		val formacionVisitante = partido.formacionVisitante
-		this.traerJugadores(formacionVisitante)		
+		this.traerJugadores(formacionVisitante)
 
 		this.cerrarQuery()
-		
+
 		partido
 	}
 
@@ -58,8 +58,8 @@ class HomeJDBCPartidos implements HomePartidos { // JDBC driver name and databas
 		rs.close()
 	}
 
-override getResultado(Equipo equipo1, Equipo equipo2) {
-	val sql = "
+	override getResultado(Equipo equipo1, Equipo equipo2) {
+		val sql = "
 		select for_loc.formacion_id as idFormacionLocal,
                eq_loc.equipo_id as idEquipoLocal,
 		       eq_loc.nombre as nombreEquipoLocal,
@@ -80,28 +80,28 @@ override getResultado(Equipo equipo1, Equipo equipo2) {
 		   and eq_loc.equipo_id = " + equipo1.id + "
            and eq_vis.equipo_id = " + equipo2.id
 
-	val ResultSet rs = this.ejecutarQuery(sql)
-	var partidoResult = new Partido
+		val ResultSet rs = this.ejecutarQuery(sql)
+		var partidoResult = new Partido
 
-	while (rs.next()) {
-		var idFormacion = rs.getInt("idFormacionLocal")
-		var id = rs.getInt("idEquipoLocal")
-		var nombre = rs.getString("nombreEquipoLocal")
-		var goles = rs.getInt("golesLocal")
-		partidoResult.formacionLocal = new Formacion(idFormacion, new Equipo(id, nombre), goles)
+		while (rs.next()) {
+			var idFormacion = rs.getInt("idFormacionLocal")
+			var id = rs.getInt("idEquipoLocal")
+			var nombre = rs.getString("nombreEquipoLocal")
+			var goles = rs.getInt("golesLocal")
+			partidoResult.formacionLocal = new Formacion(idFormacion, new Equipo(id, nombre), goles)
 
-		idFormacion = rs.getInt("idFormacionVisitante")
-		id = rs.getInt("idEquipoVisitante")
-		nombre = rs.getString("nombreEquipoVisitante")
-		goles = rs.getInt("golesVisitante")
-		partidoResult.formacionVisitante = new Formacion(idFormacion, new Equipo(id, nombre), goles)
+			idFormacion = rs.getInt("idFormacionVisitante")
+			id = rs.getInt("idEquipoVisitante")
+			nombre = rs.getString("nombreEquipoVisitante")
+			goles = rs.getInt("golesVisitante")
+			partidoResult.formacionVisitante = new Formacion(idFormacion, new Equipo(id, nombre), goles)
+		}
+
+		rs.close()
+		this.cerrarQuery()
+
+		partidoResult
 	}
-
-	rs.close()
-	this.cerrarQuery()
-	
-	partidoResult
-}
 
 	def cerrarQuery() {
 		stmt.close()
