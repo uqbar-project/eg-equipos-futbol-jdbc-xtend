@@ -6,9 +6,9 @@ import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
 
-class TestHomeJDBCPartidos {
+class TestPartidos {
 
-	HomePartidos homePartidos
+	RepoPartidos homePartidos
 	Equipo boca
 	Equipo independiente
 	Jugador palermo
@@ -16,7 +16,7 @@ class TestHomeJDBCPartidos {
 	@Before
 	def void setUp() {
 		palermo = new Jugador("Palermo") 
-		homePartidos = new HomeJDBCPartidos
+		homePartidos = new RepoJDBCPartidos
 		boca = new Equipo(1, "Boca")
 		independiente = new Equipo(2, "Independiente")
 	}
