@@ -2,13 +2,15 @@ package ar.edu.jugadores.domain
 
 import java.util.ArrayList
 import java.util.List
+import org.eclipse.xtend.lib.annotations.Accessors
 
+@Accessors
 class Formacion {
 	
-	@Property int id
-	@Property Equipo equipo
-	@Property List<Jugador> jugadores
-	@Property int goles
+	int id
+	Equipo equipo
+	List<Jugador> jugadores
+	int goles
 	
 	new(int id, Equipo equipo, int goles) {
 		this.id = id

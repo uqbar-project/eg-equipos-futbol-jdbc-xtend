@@ -1,9 +1,12 @@
 package ar.edu.jugadores.domain
 
+import org.eclipse.xtend.lib.annotations.Accessors
+
+@Accessors
 class Equipo {
 	
-	@Property int id
-	@Property String nombre
+	int id
+	String nombre
 	
 	new(int id, String nombre) {
 		this.id = id

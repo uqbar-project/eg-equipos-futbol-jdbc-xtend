@@ -1,8 +1,11 @@
 package ar.edu.jugadores.domain
 
+import org.eclipse.xtend.lib.annotations.Accessors
+
+@Accessors
 class Jugador {
 
-	@Property String nombre
+	String nombre
 
 	new(String string) {
 		this.nombre = nombre
