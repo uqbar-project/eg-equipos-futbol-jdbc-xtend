@@ -1,4 +1,4 @@
-package ar.edu.jugadores.home
+package ar.edu.jugadores.repo
 
 import ar.edu.jugadores.domain.Equipo
 import ar.edu.jugadores.domain.Jugador
@@ -8,7 +8,7 @@ import org.junit.Test
 
 class TestPartidos {
 
-	RepoPartidos homePartidos
+	ar.edu.jugadores.repo.RepoPartidos homePartidos
 	Equipo boca
 	Equipo independiente
 	Jugador palermo
@@ -16,7 +16,7 @@ class TestPartidos {
 	@Before
 	def void setUp() {
 		palermo = new Jugador("Palermo") 
-		homePartidos = new RepoJDBCPartidos
+		homePartidos = new ar.edu.jugadores.repo.RepoJDBCPartidos
 		boca = new Equipo(1, "Boca")
 		independiente = new Equipo(2, "Independiente")
 	}

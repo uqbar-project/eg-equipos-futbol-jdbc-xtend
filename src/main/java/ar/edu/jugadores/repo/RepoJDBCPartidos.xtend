@@ -1,4 +1,4 @@
-package ar.edu.jugadores.home
+package ar.edu.jugadores.repo
 
 import ar.edu.jugadores.domain.Equipo
 import ar.edu.jugadores.domain.Formacion
