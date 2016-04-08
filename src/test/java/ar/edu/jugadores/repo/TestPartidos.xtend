@@ -8,7 +8,7 @@ import org.junit.Test
 
 class TestPartidos {
 
-	ar.edu.jugadores.repo.RepoPartidos homePartidos
+	RepoPartidos repoPartidos
 	Equipo boca
 	Equipo independiente
 	Jugador palermo
@@ -16,20 +16,21 @@ class TestPartidos {
 	@Before
 	def void setUp() {
 		palermo = new Jugador("Palermo") 
-		homePartidos = new ar.edu.jugadores.repo.RepoJDBCPartidos
+		repoPartidos = new RepoJDBCPartidos
 		boca = new Equipo(1, "Boca")
 		independiente = new Equipo(2, "Independiente")
 	}
 
 	@Test
 	def void ganadorBoca2Independiente0() {
-		val partido = homePartidos.getResultado(boca, independiente)
+		val partido = repoPartidos.getResultado(boca, independiente)
 		Assert.assertEquals(boca, partido.ganador)
 	}
 
 	@Test
 	def void palermoJugoParaBocaEnBoca2Independiente0() {
-		val partido = homePartidos.getPartido(boca, independiente)
+		val partido = repoPartidos.getPartido(boca, independiente)
+		Assert.assertEquals(11, partido.formacionLocal.jugadores.size)
 		Assert.assertTrue(partido.formacionLocal.jugadores.contains(palermo))
 	}
 		

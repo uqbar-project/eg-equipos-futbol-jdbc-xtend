@@ -19,14 +19,14 @@ class Formacion {
 		this.jugadores = new ArrayList<Jugador>
 	}
 	
-	def Equipo ganador(Formacion formacion) {
-		if (goles == formacion.goles) {
+	def Equipo ganador(Formacion formacionContraria) {
+		if (goles == formacionContraria.goles) {
 			null
 		} else {
-			if (goles > formacion.goles) {
+			if (goles > formacionContraria.goles) {
 				equipo
 			}  else {
-				formacion.equipo
+				formacionContraria.equipo
 			}
 		}
 	}
