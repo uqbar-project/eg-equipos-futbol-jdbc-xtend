@@ -18,4 +18,4 @@ Testea el mapeo del ejercicio de los partidos de fútbol de la guía utilizando 
 
 ## Diagrama Entidad-Relación
 
-![Solución](docs/"DER de la solución en relacional".png)
+![Solución](docs/DER de la solución en relacional.png)
