@@ -12,7 +12,7 @@ Testea el mapeo del ejercicio de los partidos de fútbol de la guía utilizando 
 
 ![video](video/demo1.gif)
 
-![video](video/demo2.gif)
+![video](video/demoRead.gif)
 
 * Importá el proyecto Xtend como proyecto Maven
 * Entrá a la clase RepoJDBCPartidos y cambiá la contraseña de root de tu base: 
