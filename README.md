@@ -10,8 +10,7 @@ Testea el mapeo del ejercicio de los partidos de fútbol de la guía utilizando 
 
 * En MySQL: tenés que correr los scripts que están en el directorio [scripts](scripts/) en el orden en que están (01, 02, etc.)
 * Importá el proyecto Xtend como proyecto Maven
- 
- Previamente, entrá a la clase RepoJDBCPartidos y cambiá la contraseña de root de tu base: 
+* Entrá a la clase RepoJDBCPartidos y cambiá la contraseña de root de tu base: 
  
 ``` java
  static final String USER = "root"
