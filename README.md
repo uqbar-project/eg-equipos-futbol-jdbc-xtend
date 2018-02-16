@@ -1,6 +1,6 @@
 # Equipos de fútbol
 
-![Travis](https://travis-ci.org/uqbar-project/eg-equipos-futbol-jdbc.svg?branch=master)
+![Travis](https://travis-ci.org/uqbar-project/eg-equipos-futbol-jdbc-xtend.svg?branch=master)
 
 ## Prerrequisitos
 
