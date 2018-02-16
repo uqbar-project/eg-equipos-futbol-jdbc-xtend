@@ -6,10 +6,8 @@ service:
 jdk:
   - oraclejdk8
 
-before_script:
-  - echo "USE mysql;\nUPDATE user SET password=PASSWORD('laura') WHERE user='root';\nFLUSH PRIVILEGES;\n" | mysql -u root
-
 before_install:
+  - echo "USE mysql;\nUPDATE user SET password=PASSWORD('laura') WHERE user='root';\nFLUSH PRIVILEGES;\n" | mysql -u root
   - mysql --user=root --password=laura -e 'CREATE DATABASE IF NOT EXISTS jugadores;' 
   - mysql --user=root --password=laura --default-character-set=utf8 jugadores < "scripts/01 crear base de datos jugadores.sql"
   - mysql --user=root --password=laura --default-character-set=utf8 jugadores < "scripts/02 equipos_fixture.sql"
