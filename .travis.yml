@@ -1,0 +1,20 @@
+language: java
+
+service:
+  - mysql
+
+jdk:
+  - oraclejdk8
+
+before_install:
+  - mysql -e 'CREATE DATABASE IF NOT EXISTS jugadores;' 
+  - mysql -u root --default-character-set=utf8 jugadores < "scripts/01 crear base de datos jugadores.sql"
+  - mysql -u root --default-character-set=utf8 jugadores < "scripts/02 equipos_fixture.sql"
+
+script:
+  - vendor/bin/phpunit
+
+script:
+  - mvn -e -DTRAVIS_JOB_ID=$TRAVIS_JOB_ID clean install
+
+

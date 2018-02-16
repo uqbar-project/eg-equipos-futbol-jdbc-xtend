@@ -1,4 +1,3 @@
-create schema `jugadores` ;
 
 use jugadores;
 
