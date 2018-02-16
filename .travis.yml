@@ -17,6 +17,6 @@ before_install:
   - mysql --user=root --password=laura --default-character-set=utf8 jugadores < "scripts/06 partidos_fixture.sql"
 
 script:
-  - mvn -e -DTRAVIS_JOB_ID=$TRAVIS_JOB_ID clean install
+  - mvn -e -DTRAVIS_JOB_ID=$TRAVIS_JOB_ID clean install jacoco:report coveralls:report
 
 
