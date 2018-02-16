@@ -15,7 +15,7 @@ class RepoJDBCPartidos implements RepoPartidos {
 
 	//  Database credentials
 	static final String USER = "root"
-	static final String PASS = "laurita"
+	static final String PASS = "laura" // reemplazalo por la password de tu instalación
 
 	Connection conn
 	Statement stmt
