@@ -1,6 +1,6 @@
 # Equipos de fútbol
 
-![Travis](https://travis-ci.org/uqbar-project/eg-equipos-futbol-jdbc-xtend.svg?branch=master)  [![Coverage Status](https://coveralls.io/repos/github/uqbar-project/eg-equipos-futbol-jdbc-xtend/badge.svg?branch=master&service=github)](https://coveralls.io/github/uqbar-project/eg-equipos-futbol-jdbc-xtend?branch=master&service=github)
+[![Build Status](https://travis-ci.org/uqbar-project/eg-equipos-futbol-jdbc-xtend.svg?branch=master)](https://travis-ci.org/uqbar-project/eg-equipos-futbol-jdbc-xtend) [![Coverage Status](https://coveralls.io/repos/github/uqbar-project/eg-equipos-futbol-jdbc-xtend/badge.svg?branch=master&service=github)](https://coveralls.io/github/uqbar-project/eg-equipos-futbol-jdbc-xtend?branch=master&service=github)
 
 ## Prerrequisitos
 
