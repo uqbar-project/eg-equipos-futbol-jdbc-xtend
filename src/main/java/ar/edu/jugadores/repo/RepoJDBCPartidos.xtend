@@ -10,7 +10,7 @@ import java.sql.Statement
 
 class RepoJDBCPartidos implements RepoPartidos { 
 	// JDBC driver name and database URL
-	static final String JDBC_DRIVER = "com.mysql.jdbc.Driver"
+	static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver"
 	static final String DB_URL = "jdbc:mysql://localhost/jugadores"
 
 	//  Database credentials
