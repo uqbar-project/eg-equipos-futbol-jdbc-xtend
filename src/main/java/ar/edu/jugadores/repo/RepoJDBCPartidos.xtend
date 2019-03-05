@@ -15,11 +15,10 @@ class RepoJDBCPartidos implements RepoPartidos {
 
 	//  Database credentials
 	static final String USER = "root"
-	static final String PASS = "laura" // reemplazalo por la password de tu instalación
+	static final String PASS = ""     // reemplazalo por la password de tu instalación
 
 	Connection conn
 	Statement stmt
-	ResultSet rs
 
 	new() {
 		Class.forName(JDBC_DRIVER)
@@ -109,10 +108,10 @@ class RepoJDBCPartidos implements RepoPartidos {
 		conn.close()
 	}
 
-	def ejecutarQuery(String sql) {
+	def ResultSet ejecutarQuery(String sql) {
 		conn = DriverManager.getConnection(DB_URL, USER, PASS)
 		stmt = conn.createStatement()
-		rs = stmt.executeQuery(sql)
+		stmt.executeQuery(sql)
 	}
 
 }
