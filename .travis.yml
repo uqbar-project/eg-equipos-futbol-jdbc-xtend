@@ -9,13 +9,13 @@ jdk:
 
 before_install:
   - echo "USE mysql;\nSET PASSWORD FOR root@localhost = PASSWORD('');\nFLUSH PRIVILEGES;\n" | mysql -u root
-  - mysql --user=root --password=laura -e 'CREATE DATABASE IF NOT EXISTS jugadores;' 
-  - mysql --user=root --password=laura --default-character-set=utf8 jugadores < "scripts/01 crear base de datos jugadores.sql"
-  - mysql --user=root --password=laura --default-character-set=utf8 jugadores < "scripts/02 equipos_fixture.sql"
-  - mysql --user=root --password=laura --default-character-set=utf8 jugadores < "scripts/03 jugadores_fixture.sql"
-  - mysql --user=root --password=laura --default-character-set=utf8 jugadores < "scripts/04 formacion_fixture.sql"
-  - mysql --user=root --password=laura --default-character-set=utf8 jugadores < "scripts/05 formacion_jugador_fixture.sql"
-  - mysql --user=root --password=laura --default-character-set=utf8 jugadores < "scripts/06 partidos_fixture.sql"
+  - mysql --user=root -e 'CREATE DATABASE IF NOT EXISTS jugadores;' 
+  - mysql --user=root --default-character-set=utf8 jugadores < "scripts/01 crear base de datos jugadores.sql"
+  - mysql --user=root --default-character-set=utf8 jugadores < "scripts/02 equipos_fixture.sql"
+  - mysql --user=root --default-character-set=utf8 jugadores < "scripts/03 jugadores_fixture.sql"
+  - mysql --user=root --default-character-set=utf8 jugadores < "scripts/04 formacion_fixture.sql"
+  - mysql --user=root --default-character-set=utf8 jugadores < "scripts/05 formacion_jugador_fixture.sql"
+  - mysql --user=root --default-character-set=utf8 jugadores < "scripts/06 partidos_fixture.sql"
 
 script:
   - mvn -e -DTRAVIS_JOB_ID=$TRAVIS_JOB_ID clean install jacoco:report coveralls:report
