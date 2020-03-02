@@ -1,3 +1,5 @@
+use jugadores;
+
 insert into jugadores
 (nombre)
 values ('Abbondanzieri');

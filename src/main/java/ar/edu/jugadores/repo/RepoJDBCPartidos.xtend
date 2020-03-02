@@ -40,16 +40,18 @@ class RepoJDBCPartidos implements RepoPartidos {
 	}
 
 	def traerJugadores(Formacion formacion) {
-		val sql = "
-		select j.jugador_id,
-       		   j.nombre
-		  from formacion f,
-		       formacion_jugador fj,
-		       jugadores j
-		 where f.equipo_id = " + formacion.equipo.id + "
-		   and f.formacion_id = fj.formacion_id
-		   and fj.jugador_id = j.jugador_id
-		   and f.formacion_id = " + formacion.id
+		val sql = 
+			'''
+			select j.jugador_id,
+			       j.nombre
+			  from formacion f,
+			       formacion_jugador fj,
+			       jugadores j
+			 where f.equipo_id = «formacion.equipo.id»
+			   and f.formacion_id = fj.formacion_id
+			   and fj.jugador_id = j.jugador_id
+			   and f.formacion_id = «formacion.id»
+			'''
 
 		val rs = this.ejecutarQuery(sql)
 		while (rs.next()) {
@@ -59,13 +61,14 @@ class RepoJDBCPartidos implements RepoPartidos {
 	}
 
 	override getResultado(Equipo equipo1, Equipo equipo2) {
-		val sql = "
+		val sql = 
+		'''
 		select for_loc.formacion_id as idFormacionLocal,
-               eq_loc.equipo_id as idEquipoLocal,
+		       eq_loc.equipo_id as idEquipoLocal,
 		       eq_loc.nombre as nombreEquipoLocal,
 		       for_loc.goles as golesLocal,
 		       for_vis.formacion_id as idFormacionVisitante,
-               eq_vis.equipo_id as idEquipoVisitante,
+		       eq_vis.equipo_id as idEquipoVisitante,
 		       eq_vis.nombre as nombreEquipoVisitante,
 		       for_vis.goles as golesVisitante
 		  from partidos p,
@@ -77,8 +80,9 @@ class RepoJDBCPartidos implements RepoPartidos {
 		   and for_loc.equipo_id = eq_loc.equipo_id
 		   and p.formacion_visitante_id = for_vis.formacion_id
 		   and for_vis.equipo_id = eq_vis.equipo_id
-		   and eq_loc.equipo_id = " + equipo1.id + "
-           and eq_vis.equipo_id = " + equipo2.id
+		   and eq_loc.equipo_id = «equipo1.id»
+		   and eq_vis.equipo_id = «equipo2.id»
+		'''
 
 		val ResultSet rs = this.ejecutarQuery(sql)
 		var partidoResult = new Partido

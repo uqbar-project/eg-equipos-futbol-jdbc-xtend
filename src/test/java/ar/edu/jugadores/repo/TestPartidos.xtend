@@ -2,10 +2,13 @@ package ar.edu.jugadores.repo
 
 import ar.edu.jugadores.domain.Equipo
 import ar.edu.jugadores.domain.Jugador
-import org.junit.Assert
-import org.junit.Before
-import org.junit.Test
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.DisplayName
+import org.junit.jupiter.api.Test
+import static org.junit.jupiter.api.Assertions.assertTrue
+import static org.junit.jupiter.api.Assertions.assertEquals
 
+@DisplayName("Dado un partido")
 class TestPartidos {
 
 	RepoPartidos repoPartidos
@@ -13,25 +16,26 @@ class TestPartidos {
 	Equipo independiente
 	Jugador palermo
 
-	@Before
+	@BeforeEach
 	def void setUp() {
 		palermo = new Jugador("Palermo") 
-		repoPartidos = new RepoJDBCPartidos
 		boca = new Equipo(1, "Boca")
 		independiente = new Equipo(2, "Independiente")
+		repoPartidos = new RepoJDBCPartidos
 	}
 
 	@Test
+	@DisplayName("si uno de los equipos ganó, podemos determinar quién fue el equipo ganador")
 	def void ganadorBoca2Independiente0() {
 		val partido = repoPartidos.getResultado(boca, independiente)
-		Assert.assertEquals(boca, partido.ganador)
+		assertEquals(boca, partido.ganador)
 	}
 
 	@Test
+	@DisplayName("sabemos si un jugador jugó ese partido")
 	def void palermoJugoParaBocaEnBoca2Independiente0() {
 		val partido = repoPartidos.getPartido(boca, independiente)
-		Assert.assertEquals(11, partido.formacionLocal.jugadores.size)
-		Assert.assertTrue(partido.formacionLocal.jugadores.contains(palermo))
+		assertTrue(partido.formacionLocal.jugadores.contains(palermo))
 	}
 		
 }

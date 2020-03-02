@@ -11,4 +11,5 @@ class Partido {
 	def ganador() {
 		formacionLocal.ganador(formacionVisitante)
 	}
+
 }

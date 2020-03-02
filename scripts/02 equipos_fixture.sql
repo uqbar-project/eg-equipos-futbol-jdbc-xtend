@@ -1,3 +1,4 @@
+use jugadores;
 
 insert into equipos 
 (nombre)

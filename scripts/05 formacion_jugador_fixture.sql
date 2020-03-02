@@ -1,3 +1,5 @@
+use jugadores;
+
 insert into formacion_jugador
 select 1, jugador_id
   from jugadores

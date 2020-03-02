@@ -1,3 +1,5 @@
+use jugadores;
+
 select j.jugador_id,
        j.nombre
   from formacion f,
@@ -5,7 +7,7 @@ select j.jugador_id,
        jugadores j
  where f.equipo_id = 1
    and f.formacion_id = fj.formacion_id
-   and fj.jugador_id = j.jugador_id
+   and fj.jugador_id = j.jugador_id;
 
 -- Otro query parecido
 select * 
@@ -16,5 +18,5 @@ select *
  where e.nombre = 'Boca'       
    and e.equipo_id = f.equipo_id
    and fj.formacion_id = f.formacion_id
-   and j.jugador_id = fj.jugador_id
+   and j.jugador_id = fj.jugador_id;
    
